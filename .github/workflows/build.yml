@@ -1,0 +1,19 @@
+name: Build & Release
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Zip extension
+        run: zip -r contextpop.zip . -x ".git/*"
+      - name: Publish Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: contextpop.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

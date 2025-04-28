@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "ContextPop",
+  "version": "0.1.0",
+  "description": "Sticky TL;DR bubble when you reopen a WhatsApp Web chat.",
+  "icons": { "128": "icons/128.png" },
+
+  "permissions": ["storage"],
+  "host_permissions": ["https://web.whatsapp.com/*"],
+
+  "content_scripts": [
+    {
+      "matches": ["https://web.whatsapp.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "ContextPop"
+  }
+}
